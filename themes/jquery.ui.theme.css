@@ -3,19 +3,23 @@
 /* CSS Document */
 
 /* border */
-.ui-border-all, .ui-border-top{
+.ui-border-all, 
+.ui-border-top{
 	border-top : 1px solid #CCC;
 }
 
-.ui-border-all, .ui-border-right{
+.ui-border-all, 
+.ui-border-right{
 	border-right : 1px solid #CCC;
 }
 
-.ui-border-all, .ui-border-bottom{
+.ui-border-all, 
+.ui-border-bottom{
 	border-bottom : 1px solid #CCC;
 }
 
-.ui-border-all, .ui-border-left{
+.ui-border-all, 
+.ui-border-left{
 	border-left : 1px solid #CCC;
 }
 
@@ -24,9 +28,13 @@
 	width: 16px;
 	height: 16px;
 	background-position: 16px 16px;
-	background-image: url(images/glyphicons-halflings.gif);	
+	background-image: url(images/glyphicons-halflings.png);	
 }
 
 .ui-icon.ui-icon-question  {
 	background-position: -95px -95px;	
+}
+
+.ui-icon.ui-icon-add  {
+	background-position: -95px 1px;	
 }

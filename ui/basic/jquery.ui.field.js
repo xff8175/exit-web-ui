@@ -12,7 +12,6 @@
 			basicClsss:'ui-border-all ui-field-text',
 			defaultHelpIconClass:'ui-text-field-icon fn-in-inline-block',
 			disable:false,
-			helpText:'test',
 			width:160,
 			height:30
 		},
@@ -29,20 +28,23 @@
 						 height:this.options.height + "px",
 						 lineHeight:this.options.height + "px"
 					});
+					
+			this._focusable(this.element);
 			
 			if ($.isEmpty(this.options.helpText)) {
 				return ;
 			}
 			
 			var icon = $("<span>").
-						addClass("ui-icon ui-icon-question fn-in-inline-block ui-help-icon").
+						addClass("ui-icon ui-icon-question fn-in-inline-block ui-field-help-icon").
 						attr("title",this.options.helpText);
 			
 			this.element.after(icon);
-			this._focusable(this.element);
+			
 			icon.tooltip({
 			  track: true
 			});
+			
 			this._super();
 			
 		},
