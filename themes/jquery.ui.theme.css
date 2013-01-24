@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/* border */
+.ui-border-all, .ui-border-top{
+	border-top : 1px solid #CCC;
+}
+
+.ui-border-all, .ui-border-right{
+	border-right : 1px solid #CCC;
+}
+
+.ui-border-all, .ui-border-bottom{
+	border-bottom : 1px solid #CCC;
+}
+
+.ui-border-all, .ui-border-left{
+	border-left : 1px solid #CCC;
+}
+
+/*icon */
+.ui-icon {
+	width: 16px;
+	height: 16px;
+	background-position: 16px 16px;
+	background-image: url(images/glyphicons-halflings.gif);	
+}
+
+.ui-icon.ui-icon-question  {
+	background-position: -95px -95px;	
+}

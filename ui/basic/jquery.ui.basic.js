@@ -1,39 +1,29 @@
-
+/**
+ *
+ * 公共控件父类,对基础的控件初始化好基本的属性.
+ *
+ **/
 (function( $, undefined ) {
 	
 	$.widget("ui.basic", {
 		
 		options:{
 			focusable:true,
-			role:'exit-cmp',
+			role:'exit-cmp'
 		},
 		
-		basicAttr:function(element) {
-			
-			this.currentWiget = element;
-			this.currentWiget.uniqueId();
-			this.currentWiget.attr("role",this.getRole());
+		_create:function() {
+			this.element.uniqueId();
+			this.element.attr("role",this.options.role);
 			
 			if ($.isNotEmpty(this.options.tabIndex) && $.isNumeric(this.options.tabIndex)) {
-				this.currentWiget.attr("tab-index",this.options.tabIndex);
+				this.element.attr("tab-index",this.options.tabIndex);
 			}
 			
 		},
 		
-		widget: function() {
-			return this.currentWiget;
-		},
-		
 		getId:function() {
-			return this.basicTarget.id;
-		},
-		
-		setId:function(id) {
-			this.basicTarget.attr("id",id);
-		},
-		
-		getRole:function() {
-			return this.options.role;
+			return this.element.attr("id");
 		}
 		
 	});
