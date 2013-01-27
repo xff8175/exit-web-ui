@@ -41,9 +41,7 @@
 			
 			this.element.after(icon);
 			
-			icon.tooltip({
-			  track: true
-			});
+			icon.tooltip();
 			
 			this._super();
 			

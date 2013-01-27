@@ -131,15 +131,3 @@
 	-khtml-border-bottom-right-radius: 5px; 
 	border-bottom-right-radius: 5px; 
 }
-
-.ui-field-text, 
-.ui-field-help-icon {
-	vertical-align:middle;
-}
-
-.ui-text-field-icon {
-	vertical-align: top;
-	width:auto;
-	padding:0px 5px;
-	text-align: center;
-}
