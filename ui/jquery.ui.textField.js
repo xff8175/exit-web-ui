@@ -1,6 +1,6 @@
 /**
  *
- * 基础文本控件.主要加一个左边的icon和按钮
+ * 基础文本控件.主要加一个左右两边的icon和按钮
  *
  **/
 (function( $, undefined ) {
@@ -20,22 +20,32 @@
 				return ;
 			}
 			
-			if ($.isNotEmpty(this.options.lIcon)) {
-				this.addIcon(this.options.lIcon);
-				if ($.isEmpty(this.options.rIcon)) {
+			if ($.isNotEmpty(this.options.icon)) {
+				this._initIcon(this.options.icon);
+				
+				if (this.leftIcon && !this.rightIcon) {
 					this.element.addClass("ui-corner-right");
 				}
-			}
-			
-			if ($.isNotEmpty(this.options.rIcon)) {
-				this.addIcon(this.options.rIcon);
-				if ($.isEmpty(this.options.lIcon)) {
+				
+				if (!this.leftIcon && this.rightIcon) {
 					this.element.addClass("ui-corner-left");
 				}
+				
+				this.widget().find("span[role='left']:first").addClass("ui-corner-left");
+				this.widget().find("span[role='right']:last").addClass("ui-corner-right");
+				
+			} else {
+				this.element.addClass("ui-corner-all");
 			}
 			
-			if ($.isEmpty(this.options.lIcon) && $.isEmpty(this.options.rIcon)) {
-				this.element.addClass("ui-corner-all");
+		},
+		_initIcon:function(icon) {
+			if ($.isArray(icon)) {
+				$.each(icon,function(i,config) {
+					 this.addIcon(config);
+				}.createDelegate(this));
+			} else {
+				this.addIcon(icon)
 			}
 		},
 		addIcon:function(config) {
@@ -52,9 +62,9 @@
 						}).
 						attr("for",this.getId());
 						
-			/*if ($.browser.msie && ($.browser.version == "6.0" || $.browser.version == "7.0")) {
+			if ($.browser.msie && ($.browser.version == "6.0" || $.browser.version == "7.0")) {
 				s.css("marginTop","1px");
-			}*/
+			}
 			
 			if ($.isNotEmpty(config.text)) {
 				s.html(config.text);
@@ -63,7 +73,6 @@
 			if ($.isNotEmpty(config.cls)) {
 				var c = $("<span>").addClass("ui-icon " + config.cls);
 				s.append(c);
-				c.css("marginTop",((this.options.height - c.height()) / 2) + "px");
 			}
 			
 			if ($.isNotEmpty(config.handler) && $.isFunction(config.handler)) {
@@ -73,16 +82,17 @@
 			}
 			
 			if (config.position === "left") {
-				s.addClass("ui-border-top ui-border-left ui-border-bottom ui-corner-left").
+				s.addClass("ui-border-top ui-border-left ui-border-bottom").
 				  attr("role","left");
 				this.leftIcon = true;
 				this.element.before(s);
 			} else {
-				s.addClass("ui-border-top ui-border-right ui-border-bottom ui-corner-right").
+				s.addClass("ui-border-top ui-border-right ui-border-bottom").
 				  attr("role","right");
 				this.rightIcon = true;
 				this.element.after(s);
 			}
+			
 		}
 		
 	});

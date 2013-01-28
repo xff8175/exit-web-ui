@@ -9,7 +9,6 @@
 		
 		options:{
 			role:'exit-field',
-			basicClsss:'ui-border-all ui-field-text',
 			defaultHelpIconClass:'ui-text-field-icon fn-in-inline-block',
 			disable:false,
 			width:160,
@@ -22,14 +21,19 @@
 				return ;	
 			}
 			
-			this.element.addClass(this.options.basicClsss).
+			this.divWidget = $("<div>").addClass("fn-in-inline-block");
+			
+			this.element.before(this.divWidget);
+			this.divWidget.append(this.element);
+			
+			this.element.addClass("ui-border-all ui-field-text ui-widget-shadow-inset " + this.options.fieldClass).
 					css({
 						 width:this.options.width + "px",
 						 height:this.options.height + "px",
 						 lineHeight:this.options.height + "px"
 					});
-					
-			this._focusable(this.element);
+			
+			this._super();
 			
 			if ($.isEmpty(this.options.helpText)) {
 				return ;
@@ -43,10 +47,11 @@
 			
 			icon.tooltip();
 			
-			this._super();
 			
 		},
-		
+		widget:function() {
+			return this.divWidget;
+		},
 		_isField:function() {
 			return (this.element[0].tagName === "INPUT" && 
 					(this.element.attr("type") !== "button" || 

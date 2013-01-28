@@ -10,8 +10,14 @@
 	padding: 0 5px;
 }
 
+.ui-field-text.ui-widget-shadow-inset {
+	-webkit-box-shadow: inset 0 10px 9px rgba(0, 0, 0, 0.075);
+	-moz-box-shadow: inset 0 10px 9px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 10px 9px rgba(0, 0, 0, 0.075);
+}
+
 .ui-field-text.ui-state-focus {
-	border: 1px solid #74B9EF;	
+	border: 1px solid #74B9EF;
 }
 
 .ui-text-field-icon {
@@ -20,15 +26,17 @@
 	padding:0px 5px;
 	text-align: center;
 }
-
+.ui-text-field-icon .ui-icon {
+	margin-top:7px;
+}
 .ui-text-field-icon.ui-text-icon-color {
 	background-color: #EEE;
 }
 
 .ui-text-field-icon.ui-text-field-icon-button {
-	background: url(images/button_bg.jpg) repeat-x scroll 50% 50%;
+	background: url(images/button_bg.jpg) repeat-x scroll 40% 40%;
 }
 
 .ui-text-field-icon.ui-text-field-icon-button.ui-state-hover {
-	background-position: 70% 70%;	
+	background-position: 80% 80%;	
 }

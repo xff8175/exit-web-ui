@@ -26,43 +26,44 @@
 	$(document).ready(function(){
 		$("#normal").textField();
 		$("#ricon").textField({
-			rIcon:{
+			icon:{
 				text:".00",
 				position:'right'
 			}
 		});
 		$("#licon").textField({
-			lIcon:{
+			icon:{
 				text:"http://",
 				position:'left'
 			}
 		});
 		$("#lricon").textField({
-			lIcon:{
+			icon:[{
 				cls:'ui-icon-add',
 				position:'left'
-			},
-			rIcon:{
+			},{
+				cls:'ui-icon-arrows-down',
+				position:'left'
+			},{
 				text:".00",
 				position:'right'
-			}
+			}]
 		});
 		
 		$("#lricon-help").textField({
-			lIcon:{
+			icon:[{
 				text:"http://",
 				position:'left'
-			},
-			rIcon:{
-				cls:'ui-icon-add',
+			},{
+				cls:'ui-icon-arrows-down',
 				position:'right'
-			},
+			}],
 			helpText:'123...456'
 		});
 		
 		$("#licon-button").textField({
-			lIcon:{
-				text:".00",
+			icon:{
+				text:"$",
 				position:'left',
 				handler:function(){
 					alert("click left button");
@@ -71,7 +72,7 @@
 		});
 		
 		$("#ricon-button").textField({
-			rIcon:{
+			icon:{
 				text:".00",
 				position:'right',
 				handler:function(){
@@ -81,37 +82,35 @@
 		});
 		
 		$("#lricon-button").textField({
-			lIcon:{
+			icon:[{
 				cls:'ui-icon-add',
 				position:'left',
 				handler:function(){
 					alert("click left button");
 				}
-			},
-			rIcon:{
+			},{
 				text:".00",
 				position:'right',
 				handler:function(){
 					alert("click right button");
 				}
-			}
+			}]
 		});
 		
 		$("#lricon-button-help").textField({
-			lIcon:{
+			icon:[{
 				text:"http://",
 				position:'left',
 				handler:function(){
 					alert("click left button");
 				}
-			},
-			rIcon:{
+			},{
 				cls:'ui-icon-add',
 				position:'right',
 				handler:function(){
 					alert("click right button");
 				}
-			},
+			}],
 			helpText:'123...456'
 		});
 	});

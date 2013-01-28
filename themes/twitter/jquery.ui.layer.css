@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ui-layer {
+	position:absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	overflow:hidden;
+	margin-top: 2px;
+	background-color:#FFF;
+}
