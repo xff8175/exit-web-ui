@@ -16,7 +16,8 @@
 								addClass("ui-layer ui-widget ui-corner-all ui-widget-content ui-border-all ui-widget-shadow");
 								
 			if (this.options.width === "auto") {
-				this.layerWidget.width(this.element.width());
+				//-2 边框值
+				this.layerWidget.width(this.element.innerWidth() - 2);
 			}
 			
 			this.element.after(this.layerWidget);
