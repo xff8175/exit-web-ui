@@ -52,16 +52,11 @@
 		widget:function() {
 			return this.divWidget;
 		},
+		getValue:function() {
+			return this.element.val();
+		},
 		_isField:function() {
-			return (this.element[0].tagName === "INPUT" && 
-					(this.element.attr("type") !== "button" || 
-					 this.element.attr("type") !== "submit" || 
-					 this.element.attr("type") !== "reset" || 
-					 this.element.attr("type") !== "image" || 
-					 this.element.attr("type") !== "checkbox" ||
-					 this.element.attr("type") !== "radio")) || 
-					this.element[0].tagName === "SELECT" || 
-					this.element[0].tagName === "TEXTAREA";
+			return this.element.is("input") || this.element.is("select") || this.element.is("textarea");
 		}
 		
 	});
