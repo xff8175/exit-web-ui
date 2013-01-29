@@ -27,11 +27,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#select1").comboBox();
-		$("#select2").comboBox();
-		$("#select3").comboBox();
-		$("#select4").comboBox();
-		$("#select5").comboBox();
+		$("#comboBox1").comboBox();
 	});
 </script>
 <style type="text/css">
@@ -43,76 +39,12 @@
 
 <body>
 	<div class="layout">
-        <p><select id="select1">
-            <option>
-                全部
-            </option>
-            <option>
-                启用
-            </option>
-            <option>
-                禁用
-            </option>
-            <option>
-                删除
-            </option>
-        </select></p>
-       <p> <select id="select2">
-            <option>
-                全部
-            </option>
-            <option>
-                启用
-            </option>
-            <option>
-                禁用
-            </option>
-            <option>
-                删除
-            </option>
-        </select></p>
-        <p><select id="select3">
-            <option>
-                全部
-            </option>
-            <option>
-                启用
-            </option>
-            <option>
-                禁用
-            </option>
-            <option>
-                删除
-            </option>
-        </select></p>
-        <p><select id="select4">
-            <option>
-                全部
-            </option>
-            <option>
-                启用
-            </option>
-            <option>
-                禁用
-            </option>
-            <option>
-                删除
-            </option>
-        </select></p>
-        <p><select id="select5">
-            <option>
-                全部
-            </option>
-            <option>
-                启用
-            </option>
-            <option>
-                禁用
-            </option>
-            <option>
-                删除
-            </option>
-        </select></p>
+        <p>
+        	<input id="comboBox1" type="text" data-options="url:'data/combo-box.json'"/>
+        </p>
+        <p>
+        	<input id="comboBox2" type="text" data-options="multiple:true,url:'data/combo-box.json'"/>
+        </p>
     </div>
 </body>
 </html>

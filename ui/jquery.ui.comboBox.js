@@ -10,11 +10,11 @@
 			dropDownWidth:'auto',
 			dropDownHeight:'auto',
 			textField:'text',
-			valueField:'value',
-			autoWrite:{}
+			valueField:'value'
 		},
 		
 		_create:function() {
+			
 			if (this.element.is("select")) {
 				var input = $("<input>");
 				this.selectTarget = this.element;

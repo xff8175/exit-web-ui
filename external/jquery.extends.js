@@ -242,20 +242,13 @@
                 }
             }
             return value;
-        }
-	});
-	
-	$.applyIf($.fn,{
-		
-		/**
-		 * 判断当前对象是否为隐藏状态
-		 * 
-		 * @return boolean
-		 */
-		isHide:function(){
-			return $.isHide(this);
+        },
+		parseJSON:function(json,useNative) {
+			if (useNative) {
+				return JSON.parse(json);
+			}
+			return eval("(" + json + ')')
 		}
-	
 	});
 	
 	/**

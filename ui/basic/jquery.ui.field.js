@@ -21,6 +21,8 @@
 				return ;	
 			}
 			
+			this.options = $.applyIf(this.getDataOptions(),this.options);
+			
 			this.divWidget = $("<div>").addClass("fn-in-inline-block");
 			
 			this.element.before(this.divWidget);
@@ -49,6 +51,12 @@
 			
 			
 		},
+		
+		getDataOptions:function() {
+			var options = this.element.attr("data-options");
+			return $.isEmpty(options) ? null : $.parseJSON("{" + options + "}");
+		},
+		
 		widget:function() {
 			return this.divWidget;
 		},
