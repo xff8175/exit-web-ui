@@ -243,12 +243,14 @@
             }
             return value;
         },
+		
 		parseJSON:function(json,useNative) {
 			if (useNative) {
 				return JSON.parse(json);
 			}
 			return eval("(" + json + ')')
-		}
+		},
+		emptyFn:function () {}
 	});
 	
 	/**

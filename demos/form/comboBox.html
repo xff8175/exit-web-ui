@@ -28,6 +28,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#comboBox1").comboBox();
+		$("#comboBox2").comboBox();
+		$("#select-combo1").comboBox();
+		$("#select-combo2").comboBox();
 	});
 </script>
 <style type="text/css">
@@ -40,10 +43,42 @@
 <body>
 	<div class="layout">
         <p>
-        	<input id="comboBox1" type="text" data-options="url:'data/combo-box.json'"/>
+        	<input id="comboBox1" type="text" name="data" data-options="url:'data/combo-box.json'"/>
         </p>
         <p>
-        	<input id="comboBox2" type="text" data-options="multiple:true,url:'data/combo-box.json'"/>
+        	<input id="comboBox2" type="text" name="data" data-options="multiple:true,url:'data/combo-box.json'"/>
+        </p>
+        <p>
+        	<select id="select-combo1" name="state" >
+            	<option value="">
+                	全部
+                </option>
+                <option value="1">
+                	启用
+                </option>
+                <option value="2">
+                	禁用
+                </option>
+                <option value="3">
+                	删除
+                </option>
+            </select>
+        </p>
+        <p>
+        	<select id="select-combo2" name="state" multiple="multiple">
+            	<option value="">
+                	全部
+                </option>
+                <option value="1">
+                	启用
+                </option>
+                <option value="2">
+                	禁用
+                </option>
+                <option value="3">
+                	删除
+                </option>
+            </select>
         </p>
     </div>
 </body>

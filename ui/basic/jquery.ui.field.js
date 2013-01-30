@@ -10,7 +10,7 @@
 		options:{
 			role:'exit-field',
 			defaultHelpIconClass:'ui-text-field-icon fn-in-inline-block',
-			disable:false,
+			serachable:true,
 			width:160,
 			height:30
 		},
@@ -21,14 +21,14 @@
 				return ;	
 			}
 			
-			this.options = $.applyIf(this.getDataOptions(),this.options);
+			this.options = $.applyIf(this.getDataOptions() || {},this.options);
 			
-			this.divWidget = $("<div>").addClass("fn-in-inline-block");
+			this.divContainer = $("<div>").addClass("fn-in-inline-block");
 			
-			this.element.before(this.divWidget);
-			this.divWidget.append(this.element);
+			this.element.before(this.divContainer);
+			this.divContainer.append(this.element);
 			
-			this.element.addClass("ui-border-all ui-field-text ui-widget-shadow-inset " + this.options.fieldClass).
+			this.element.addClass("ui-border-all ui-field-text ui-widget-shadow-inset " + (this.options.fieldClass || "")).
 					css({
 						 width:this.options.width + "px",
 						 height:this.options.height + "px",
@@ -37,18 +37,28 @@
 			
 			this._super();
 			
-			if ($.isEmpty(this.options.helpText)) {
-				return ;
+			if ($.isNotEmpty(this.options.helpText)) {
+				
+				var icon = $("<span>").
+							addClass("ui-icon ui-icon-question fn-in-inline-block ui-field-help-icon").
+							attr("title",this.options.helpText);
+				
+				this.element.after(icon);
+				
+				icon.tooltip();
+			
 			}
 			
-			var icon = $("<span>").
-						addClass("ui-icon ui-icon-question fn-in-inline-block ui-field-help-icon").
-						attr("title",this.options.helpText);
+			if (this.options.serachable) {
+				this.element.bind("input" + this.eventNamespace,this._search.createDelegate(this));
+			}
 			
-			this.element.after(icon);
-			
-			icon.tooltip();
-			
+			if (this.element.is(":disabled")) {
+				this.disable();
+			}
+		},
+		
+		_search:function(){
 			
 		},
 		
@@ -57,8 +67,8 @@
 			return $.isEmpty(options) ? null : $.parseJSON("{" + options + "}");
 		},
 		
-		widget:function() {
-			return this.divWidget;
+		getDivContainer:function() {
+			return this.divContainer;
 		},
 		getValue:function() {
 			return this.element.val();

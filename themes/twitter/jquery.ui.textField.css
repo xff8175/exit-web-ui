@@ -10,10 +10,8 @@
 	padding: 0 5px;
 }
 
-.ui-field-text.ui-widget-shadow-inset {
-	-webkit-box-shadow: inset 0 10px 9px rgba(0, 0, 0, 0.075);
-	-moz-box-shadow: inset 0 10px 9px rgba(0, 0, 0, 0.075);
-	box-shadow: inset 0 10px 9px rgba(0, 0, 0, 0.075);
+.ui-field-text.ui-state-disabled {
+	background-color: #eeeeee;
 }
 
 .ui-field-text.ui-state-focus {

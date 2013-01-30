@@ -20,26 +20,25 @@
 				return ;
 			}
 			
-			if ($.isNotEmpty(this.options.icon)) {
-				this._initIcon(this.options.icon);
 				
-				if (this.leftIcon && !this.rightIcon) {
-					this.element.addClass("ui-corner-right");
-				}
-				
-				if (!this.leftIcon && this.rightIcon) {
-					this.element.addClass("ui-corner-left");
-				}
-				
-				this.widget().find("span[role='left']:first").addClass("ui-corner-left");
-				this.widget().find("span[role='right']:last").addClass("ui-corner-right");
-				
-			} else {
+			this._initIcon(this.options.icon);
+			
+			this.getDivContainer().find("span[role='left']:first").addClass("ui-corner-left");
+			this.getDivContainer().find("span[role='right']:last").addClass("ui-corner-right");
+			
+			if (this.leftIcon && !this.rightIcon) {
+				this.element.addClass("ui-corner-right");
+			} else if (!this.leftIcon && this.rightIcon) {
+				this.element.addClass("ui-corner-left");
+			} else if (!this.leftIcon && !this.rightIcon){
 				this.element.addClass("ui-corner-all");
 			}
 			
 		},
 		_initIcon:function(icon) {
+			if ($.isEmpty(icon)) {
+				return ;
+			}
 			if ($.isArray(icon)) {
 				$.each(icon,function(i,config) {
 					 this.addIcon(config);
@@ -82,13 +81,11 @@
 			}
 			
 			if (config.position === "left") {
-				s.addClass("ui-border-top ui-border-left ui-border-bottom").
-				  attr("role","left");
+				s.addClass("ui-border-top ui-border-left ui-border-bottom").attr("role","left");
 				this.leftIcon = true;
 				this.element.before(s);
 			} else {
-				s.addClass("ui-border-top ui-border-right ui-border-bottom").
-				  attr("role","right");
+				s.addClass("ui-border-top ui-border-right ui-border-bottom").attr("role","right");
 				this.rightIcon = true;
 				this.element.after(s);
 			}
