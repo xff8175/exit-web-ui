@@ -75,7 +75,7 @@
 			}
 			
 			if ($.isNotEmpty(config.handler) && $.isFunction(config.handler)) {
-				s.addClass("ui-text-field-icon-button mouse-hand");
+				s.addClass("ui-button mouse-hand");
 				this._hoverable(s)
 				s.click(config.handler)
 			}

@@ -31,10 +31,9 @@
 	background-color: #EEE;
 }
 
-.ui-text-field-icon.ui-text-field-icon-button {
-	background: url(images/button_bg.jpg) repeat-x scroll 40% 40%;
-}
-
-.ui-text-field-icon.ui-text-field-icon-button.ui-state-hover {
-	background-position: 80% 80%;	
+.ui-text-field-icon.ui-button {
+    font-size: 12px;
+    padding: 0 5px;
+	vertical-align:top;
+	line-height:none;
 }

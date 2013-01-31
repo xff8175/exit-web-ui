@@ -11,6 +11,7 @@
 			role:'exit-field',
 			defaultHelpIconClass:'ui-text-field-icon fn-in-inline-block',
 			serachable:true,
+			hideField:false,
 			width:160,
 			height:30
 		},
@@ -34,6 +35,8 @@
 						 height:this.options.height + "px",
 						 lineHeight:this.options.height + "px"
 					});
+					
+			this.element.attr("autocomplete","off");
 			
 			this._super();
 			
@@ -50,7 +53,27 @@
 			}
 			
 			if (this.options.serachable) {
-				this.element.bind("input" + this.eventNamespace,this._search.createDelegate(this));
+				this.element.bind("keyup" + this.eventNamespace,function(event){
+					
+					var tempFunction = function(event){
+						
+						var val = $(this.element).val();
+						
+						if (($.isEmpty(val) && $.isEmpty(this.originalSearchVal)) || this.originalSearchVal === val){
+							return ;
+						}
+						
+						this.originalSearchVal = val;
+						
+						this._search(val);
+					};
+					tempFunction.defer(500,this,[event]);
+					
+				}.createDelegate(this));
+			}
+			
+			if (this.options.hideField) {
+				this._createHideField(this.element.attr("name"));
 			}
 			
 			if (this.element.is(":disabled")) {
@@ -58,9 +81,7 @@
 			}
 		},
 		
-		_search:function(){
-			
-		},
+		_search:function(){},
 		
 		getDataOptions:function() {
 			var options = this.element.attr("data-options");
@@ -75,8 +96,15 @@
 		},
 		_isField:function() {
 			return this.element.is("input") || this.element.is("select") || this.element.is("textarea");
+		},
+		_getFieldName:function() {
+			return this.hideInput ? this.hideInput.attr("name") : this.element.attr("name");
+		},
+		_createHideField:function(name) {
+			this.hideInput = $("<input type='hidden'>").attr("name",name);
+			this.element.after(this.hideInput);
+			this.element.removeAttr("name");
 		}
-		
 	});
 	
 })( jQuery );

@@ -10,6 +10,7 @@
 <link href="../../themes/twitter/jquery.ui.tooltip.css" rel="stylesheet" type="text/css" />
 <link href="../../themes/twitter/jquery.ui.textField.css" rel="stylesheet" type="text/css" />
 <link href="../../themes/twitter/jquery.ui.layer.css" rel="stylesheet" type="text/css" />
+<link href="../../themes/twitter/jquery.ui.button.css" rel="stylesheet" type="text/css" />
 <link href="../../themes/twitter/jquery.ui.comboBox.css" rel="stylesheet" type="text/css" />
 
 <script src="../../library/jquery-1.8.3.js" type="text/javascript"></script>
@@ -24,13 +25,14 @@
 <script src="../../ui/jquery.ui.tooltip.js" type="text/javascript"></script>
 <script src="../../ui/jquery.ui.textField.js" type="text/javascript"></script>
 <script src="../../ui/jquery.ui.comboBox.js" type="text/javascript"></script>
+<script src="../../ui/jquery.ui.multipleComboBox.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#comboBox1").comboBox();
-		$("#comboBox2").comboBox();
+		$("#comboBox2").multipleComboBox();
 		$("#select-combo1").comboBox();
-		$("#select-combo2").comboBox();
+		$("#select-combo2").multipleComboBox();
 	});
 </script>
 <style type="text/css">
@@ -42,44 +44,50 @@
 
 <body>
 	<div class="layout">
-        <p>
-        	<input id="comboBox1" type="text" name="data" data-options="url:'data/combo-box.json'"/>
-        </p>
-        <p>
-        	<input id="comboBox2" type="text" name="data" data-options="multiple:true,url:'data/combo-box.json'"/>
-        </p>
-        <p>
-        	<select id="select-combo1" name="state" >
-            	<option value="">
-                	全部
-                </option>
-                <option value="1">
-                	启用
-                </option>
-                <option value="2">
-                	禁用
-                </option>
-                <option value="3">
-                	删除
-                </option>
-            </select>
-        </p>
-        <p>
-        	<select id="select-combo2" name="state" multiple="multiple">
-            	<option value="">
-                	全部
-                </option>
-                <option value="1">
-                	启用
-                </option>
-                <option value="2">
-                	禁用
-                </option>
-                <option value="3">
-                	删除
-                </option>
-            </select>
-        </p>
+        <form action="#" method="get">
+             <p>
+                <input id="comboBox1" type="text" name="data" data-options="url:'data/combo-box.json'"/>
+            </p>
+            <p>
+                <input id="comboBox2" type="text" name="data" data-options="multiple:true,url:'data/combo-box.json'"/>
+            </p>
+            <p>
+                <select id="select-combo1" name="state" >
+                    <option value="">
+                        全部
+                    </option>
+                    <option value="1">
+                        启用
+                    </option>
+                    <option value="2">
+                        禁用
+                    </option>
+                    <option value="3">
+                        删除
+                    </option>
+                </select>
+            </p>
+            <p>
+                <select id="select-combo2" name="state" multiple="multiple">
+                    <option value="">
+                        全部
+                    </option>
+                    <option value="1">
+                        启用
+                    </option>
+                    <option value="2">
+                        禁用
+                    </option>
+                    <option value="3">
+                        删除
+                    </option>
+                </select>
+            </p>
+            <p>
+            	<!--<input type="submit" value="提交" />-->
+            </p>
+        </form>
+       
     </div>
 </body>
 </html>

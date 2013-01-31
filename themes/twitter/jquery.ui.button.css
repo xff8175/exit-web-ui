@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ui-button {
+	padding: 4px 10px;
+	vertical-align: middle;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333333;
+	text-align: center;
+	background-color: #f5f5f5;
+	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+	background-repeat: repeat-x;
+}
+
+.ui-button.ui-state-hover {
+	color: #333333;
+	background-color: #e6e6e6;
+	text-decoration: none;
+	background-position: 0 -15px;
+	-webkit-transition: background-position 0.1s linear;
+	-moz-transition: background-position 0.1s linear;
+	-o-transition: background-position 0.1s linear;
+	transition: background-position 0.1s linear;
+}
