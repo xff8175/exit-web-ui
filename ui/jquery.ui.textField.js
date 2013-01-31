@@ -9,7 +9,7 @@
 		
 		options:{
 			role:'exit-text-field',
-			defaultIconCls:'ui-text-field-icon ui-text-icon-color fn-in-inline-block'
+			defaultIconCls:'fn-in-inline-block ui-text-field-icon ui-text-icon-color '
 		},
 		
 		_create:function() {
@@ -65,9 +65,7 @@
 				s.css("marginTop","1px");
 			}
 			
-			if ($.isNotEmpty(config.text)) {
-				s.html(config.text);
-			}
+			s.html(config.text || "");
 			
 			if ($.isNotEmpty(config.cls)) {
 				var c = $("<span>").addClass("ui-icon " + config.cls);
