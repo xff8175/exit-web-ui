@@ -9,11 +9,11 @@
 		
 		options:{
 			role:'exit-field',
-			defaultHelpIconClass:'ui-text-field-icon fn-in-inline-block',
+			defaultHelpIconClass:'fn-in-inline-block ui-text-field-icon',
 			serachable:true,
 			hideField:false,
 			width:160,
-			height:30
+			height:20
 		},
 		
 		_create:function() {
@@ -22,19 +22,10 @@
 				return ;	
 			}
 			
-			this.options = $.applyIf(this.getDataOptions() || {},this.options);
-			
 			this.divContainer = $("<div>").addClass("fn-in-inline-block");
 			
 			this.element.before(this.divContainer);
 			this.divContainer.append(this.element);
-			
-			this.element.addClass("ui-border-all ui-field-text ui-widget-shadow-inset " + (this.options.fieldClass || "")).
-					css({
-						 width:this.options.width + "px",
-						 height:this.options.height + "px",
-						 lineHeight:this.options.height + "px"
-					});
 					
 			this.element.attr("autocomplete","off");
 			
@@ -46,7 +37,7 @@
 							addClass("ui-icon ui-icon-question fn-in-inline-block ui-field-help-icon").
 							attr("title",this.options.helpText);
 				
-				this.element.after(icon);
+				this.divContainer.after(icon);
 				
 				icon.tooltip();
 			
@@ -83,19 +74,11 @@
 		
 		_search:function(){},
 		
-		getDataOptions:function() {
-			var options = this.element.attr("data-options");
-			return $.isEmpty(options) ? null : $.parseJSON("{" + options + "}");
-		},
-		
 		getDivContainer:function() {
 			return this.divContainer;
 		},
 		getValue:function() {
 			return this.element.val();
-		},
-		_isField:function() {
-			return this.element.is("input") || this.element.is("select") || this.element.is("textarea");
 		},
 		_getFieldName:function() {
 			return this.hideInput ? this.hideInput.attr("name") : this.element.attr("name");

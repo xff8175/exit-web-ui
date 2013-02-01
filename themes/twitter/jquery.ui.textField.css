@@ -7,7 +7,7 @@
 
 .ui-field-text {
 	color: #555;
-	padding: 0 5px;
+	padding: 5px;
 }
 
 .ui-field-text.ui-state-disabled {
@@ -24,17 +24,18 @@
 	padding:0px 5px;
 	text-align: center;
 }
+
 .ui-text-field-icon .ui-icon {
 	margin-top:7px;
 }
+
 .ui-text-field-icon.ui-text-icon-color {
 	background-color: #EEE;
 }
 
 .ui-text-field-icon.ui-button {
-    font-size: 12px !important;
-    padding: 0px 5px !important;
-	vertical-align:top !important;
-	line-height:none !important;
-	
+    font-size: 12px;
+    padding: 0px 5px;
+	vertical-align:top;
+	line-height:none;
 }

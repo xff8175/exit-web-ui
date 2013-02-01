@@ -20,7 +20,13 @@
 				return ;
 			}
 			
-				
+			this.element.addClass("ui-border-all ui-field-text ui-widget-shadow-inset " + (this.options.fieldClass || "")).
+			css({
+				 width:this.options.width + "px",
+				 height:this.options.height + "px",
+				 lineHeight:this.options.height + "px"
+			});
+					
 			this._initIcon(this.options.icon);
 			
 			this.getDivContainer().find("span[role='left']:first").addClass("ui-corner-left");
@@ -56,8 +62,8 @@
 			
 			var s = $("<span>").
 						addClass(config.iconCls).css({
-							 height:this.options.height + "px",
-							 lineHeight:this.options.height + "px"
+							 height:this.element.innerHeight() + "px",
+							 lineHeight:this.element.innerHeight() + "px"
 						}).
 						attr("for",this.getId());
 						

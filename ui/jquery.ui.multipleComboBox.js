@@ -8,7 +8,6 @@
 		},
 		_createDataContainer:function(o) {
 			var li = $("<li>").
-					html(o[this.options.textField]).
 					addClass("mouse-hand"),
 					
 			check = $("<input type='checkbox'>").
@@ -16,14 +15,19 @@
 					val(o[this.options.valueField]);
 					
 			li.prepend(check);
-					
+			check.checker({
+				text:o[this.options.textField]
+			});
 			return li;
 		},
-		setValue:function(val) {
+		setValue:function(val,checked) {
 			var arr = new Array();
 				
 			var c = this.dataContainer.find("input[type='checkbox'][value='"+val+"']");
-			c.prop("checked", !c.is(":checked"));
+			
+			if (!checked) {
+				c.checker("checked");
+			}
 			
 			$.each(this.dataContainer.find("input[type='checkbox']:checked"),function(i,o){
 				arr.push(this.findText($(o).val()));
@@ -44,9 +48,17 @@
 			return arr.join(",");
 		},
 		_itemClick:function(event) {
-			this.setValue($(event.currentTarget).find("input[type='checkbox']").val());
-			this.isClose = false;
+			
 			this.element.focus();
+			this.isClose = false;
+			
+			if ($(event.target).is("span")) {
+				var id = $(event.target).attr("for");
+				this.setValue($("#" + id).checker("getValue"),true);
+			} else {
+				this.setValue($(event.currentTarget).find("input[type='checkbox']").val());
+			}
+			
 		},
 		validValue:function() {
 			
@@ -56,10 +68,6 @@
 			
 			var checkeds = this.dataContainer.find("input[type='checkbox']:checked");
 			var texts = this.element.val().split(",");
-			
-			/*if (texts.length == checkeds.length) {
-				return ;
-			}*/
 			
 			checkeds.prop("checked",false);
 			

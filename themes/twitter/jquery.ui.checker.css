@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ui-checker {
+	background-image: url(images/checker.png);
+	height: 15px;
+	width: 15px;
+	_padding-bottom:1px;
+	margin-right: 3px;
+	vertical-align: middle;
+}
+
+.ui-checker.checkbox {
+	background-position: 0px 0px;	
+}
+
+.ui-checker.checkbox.ui-state-hover {
+	background-position: -15px 0px;	
+}
+
+.ui-checker.checkbox.checked {
+	background-position: -30px 0px;
+}
+
+.ui-checker.checkbox.checked.ui-state-hover {
+	background-position: -45px 0px;
+}
+
+.ui-checker.checkbox.ui-state-disabled {
+	background-position: -60px 0px;
+}
+
+.ui-checker.checkbox.checked.ui-state-disabled {
+	background-position: -75px 0px;
+}
+
+.ui-checker.radio {
+	background-position: 0px -15px;	
+}
+
+.ui-checker.radio.ui-state-hover {
+	background-position: -15px -15px;	
+}
+
+.ui-checker.radio.checked {
+	background-position: -30px -15px;
+}
+
+.ui-checker.radio.checked.ui-state-hover {
+	background-position: -45px -15px;
+}
+
+.ui-checker.radio.ui-state-disabled {
+	background-position: -60px -15px;
+}
+
+.ui-checker.radio.checked.ui-state-disabled {
+	background-position: -75px -15px;
+}
+
+
+.ui-checker-text {
+	line-height:15px;
+	font-size: 12px;
+}

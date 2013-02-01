@@ -14,6 +14,9 @@
 		},
 		
 		_create:function() {
+			
+			this.options = $.applyIf(this.getDataOptions() || {},this.options);
+			
 			this.element.uniqueId();
 			this.element.attr("role",this.options.role);
 			
@@ -31,6 +34,18 @@
 			
 		},
 		
+		_isField:function() {
+			return this.element.is("select") || 
+					this.element.is("textarea") || 
+					(this.element.is("input:not(:button)") &&
+					this.element.is("input:not(:submit)") &&
+					this.element.is("input:not(:image)") && 
+					this.element.is("input:not(:reset)"));
+		},
+		getDataOptions:function() {
+			var options = this.element.attr("data-options");
+			return $.isEmpty(options) ? null : $.parseJSON("{" + options + "}");
+		},
 		getId:function() {
 			return this.element.attr("id");
 		}
