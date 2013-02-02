@@ -25,19 +25,16 @@ $(document).ready(function(){
 </head>
 
 <body>
-
-	<p>
-	<input type="checkbox" name="system" value="1" data-options="text:'苹果系统'" />
-    <input type="checkbox" name="system" value="2" data-options="text:'安卓系统'" />
-    <input type="checkbox" name="system" value="3" data-options="text:'window系统'" />
-    <input type="checkbox" name="system" value="4" data-options="text:'塞班系统'" />
+    <p>
+    <input type="checkbox" name="systems" value="1" data-options="text:'苹果系统'" />
+    <input type="checkbox" name="systems" value="2" data-options="text:'安卓系统'" />
+    <input type="checkbox" name="systems" disabled="disabled" value="3" data-options="text:'window系统'" />
+    <input type="checkbox" name="systems" disabled="disabled" checked="checked" value="4" data-options="text:'塞班系统'" />
     </p>
-    
     <p>
     <input type="radio" name="system" value="1" data-options="text:'苹果系统'" />
     <input type="radio" name="system" value="2" data-options="text:'安卓系统'" />
-    <input type="radio" name="system" value="3" data-options="text:'window系统'" />
-    <input type="radio" name="system" value="4" data-options="text:'塞班系统'" />
+    <input type="radio" name="system" disabled="disabled" value="3" data-options="text:'window系统'" />
     </p>
     
 </body>

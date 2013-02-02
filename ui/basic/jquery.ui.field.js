@@ -19,7 +19,7 @@
 		_create:function() {
 			
 			if (!this._isField()) {
-				return ;	
+				return false;	
 			}
 			
 			this.divContainer = $("<div>").addClass("fn-in-inline-block");
@@ -87,6 +87,15 @@
 			this.hideInput = $("<input type='hidden'>").attr("name",name);
 			this.element.after(this.hideInput);
 			this.element.removeAttr("name");
+			this.hideInput.val(this.element.val());
+		},
+		_isField:function() {
+			return this.element.is("select") || 
+					this.element.is("textarea") || 
+					(this.element.is("input:not(:button)") &&
+					this.element.is("input:not(:submit)") &&
+					this.element.is("input:not(:image)") && 
+					this.element.is("input:not(:reset)"));
 		}
 	});
 	

@@ -39,3 +39,7 @@
 	vertical-align:top;
 	line-height:none;
 }
+
+.ui-text-field-icon.ui-button.ui-state-hover {
+	background-position: 0 -30px;
+}

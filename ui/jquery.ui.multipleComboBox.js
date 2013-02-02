@@ -7,9 +7,7 @@
 			hideField:false
 		},
 		_createDataContainer:function(o) {
-			var li = $("<li>").
-					addClass("mouse-hand"),
-					
+			var li = $("<li>"),
 			check = $("<input type='checkbox'>").
 					attr("name",this._getFieldName()).
 					val(o[this.options.valueField]);
@@ -19,6 +17,19 @@
 				text:o[this.options.textField]
 			});
 			return li;
+		},
+		_init:function(){
+			if (this.options.autoLoad && $.isNotEmpty(this.options.url)) {
+				this.load(this.options.url);
+			} else if (this.options.data) {
+				this.add(this.options.data);
+				if (this.selectedVal.length > 0) {
+					$.each(this.selectedVal,function(i,o){
+						this.setValue($(o).attr("value"));
+					}.createDelegate(this));
+					delete this.selectedVal;
+				}
+			}
 		},
 		setValue:function(val,checked) {
 			var arr = new Array();
@@ -45,7 +56,7 @@
 				arr.push($(o).val());
 			});
 			
-			return arr.join(",");
+			return arr;
 		},
 		_itemClick:function(event) {
 			

@@ -3,10 +3,8 @@
 
 .ui-checker {
 	background-image: url(images/checker.png);
-	height: 15px;
-	width: 15px;
-	_padding-bottom:1px;
-	margin-right: 3px;
+	height: 19px;
+	width: 19px;
 	vertical-align: middle;
 }
 
@@ -15,51 +13,45 @@
 }
 
 .ui-checker.checkbox.ui-state-hover {
-	background-position: -15px 0px;	
+	background-position: -19px 0px;	
 }
 
 .ui-checker.checkbox.checked {
-	background-position: -30px 0px;
+	background-position: -38px 0px;
 }
 
 .ui-checker.checkbox.checked.ui-state-hover {
-	background-position: -45px 0px;
+	background-position: -57px 0px;
 }
 
-.ui-checker.checkbox.ui-state-disabled {
-	background-position: -60px 0px;
+.ui-checker-disabled.checkbox {
+	background-position: -76px 0px;
 }
 
-.ui-checker.checkbox.checked.ui-state-disabled {
-	background-position: -75px 0px;
+.ui-checker-disabled.checkbox.checked {
+	background-position: -95px 0px;
 }
 
 .ui-checker.radio {
-	background-position: 0px -15px;	
+	background-position: 0px -19px;	
 }
 
 .ui-checker.radio.ui-state-hover {
-	background-position: -15px -15px;	
+	background-position: -19px -19px;	
 }
 
 .ui-checker.radio.checked {
-	background-position: -30px -15px;
+	background-position: -38px -19px;
 }
 
 .ui-checker.radio.checked.ui-state-hover {
-	background-position: -45px -15px;
+	background-position: -57px -19px;
 }
 
-.ui-checker.radio.ui-state-disabled {
-	background-position: -60px -15px;
+.ui-checker-disabled.radio {
+	background-position: -76px -19px;
 }
 
-.ui-checker.radio.checked.ui-state-disabled {
-	background-position: -75px -15px;
-}
-
-
-.ui-checker-text {
-	line-height:15px;
-	font-size: 12px;
+.ui-checker-disabled.radio.checked {
+	background-position: -95px -19px;
 }

@@ -137,11 +137,3 @@ body .fn-hide {
 	*display: inline;
 	*zoom:1;
 }
-
-.mouse-hand {
-	cursor : pointer !important;
-}
-
-.mouse-move {
-	cursor : move !important;
-}

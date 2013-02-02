@@ -15,7 +15,6 @@
 			searchModel:'local',
 			autoLoad:true
 		},
-		rtrim:/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 		_create:function() {
 			
 			if (!this._isField(this.element)) {
@@ -23,22 +22,7 @@
 			}
 			
 			if(this.element.is("select")) {
-				this.options.data = this.options.data || new Array();
-				$.each(this.element.find("option"),function(i,o){
-					var temp = {},o = $(o);
-					temp[this.options.textField] = o.html().replace(this.rtrim,"");
-					temp[this.options.valueField] = o.attr("value");
-					this.options.data.push(temp);
-				}.createDelegate(this));
-				
-				var temp = this.element;
-				
-				this.element = $("<input type='text'>").attr({
-					"name":this._getFieldName(),
-					"data-options":temp.attr("ata-options")
-				});
-				
-				temp.after(this.element).remove();
+				this._initSelect();
 			}
 			
 			var icon = {
@@ -66,22 +50,46 @@
 			
 			this._initDropDownLayer();
 		},
+		_initSelect:function() {
+			this.options.data = this.options.data || new Array();
+			$.each(this.element.find("option"),function(i,o){
+				var temp = {},o = $(o);
+				temp[this.options.textField] = o.html().replace(this.rtrim,"");
+				temp[this.options.valueField] = o.attr("value");
+				this.options.data.push(temp);
+			}.createDelegate(this));
+			
+			var temp = this.element;
+			
+			this.selectedVal = this.element.find("option:selected");
+			
+			this.element = $("<input type='text'>").attr({
+				"name":this._getFieldName(),
+				"data-options":temp.attr("ata-options")
+			});
+			this.options.url = "";
+			temp.after(this.element).remove();
+		},
 		_init:function(){
-			if (this.options.autoLoad && this.options.url) {
+			if (this.options.autoLoad && $.isNotEmpty(this.options.url)) {
 				this.load(this.options.url);
 			} else if (this.options.data) {
 				this.add(this.options.data);
+				
+				if (this.selectedVal.length > 0) {
+					this.setValue(this.selectedVal.attr("value"));
+					delete this.selectedVal;
+				}
 			}
 		},
 		_initDropDownLayer:function() {
 			
 			this.getDivContainer().layer({
-				width:this.dropDownWidth,
-				height:this.dropDownHeight,
+				width:this.options.dropDownWidth,
 				autoShow:false
 			});
 			
-			this.dataContainer = $("<ul>").addClass("ui-combo-dd-widget");
+			this.dataContainer = $("<ul>").addClass("ui-combo-dd-widget").height(this.options.dropDownHeight);
 			
 			this.selectedIndex = -1;
 			
@@ -179,7 +187,7 @@
 			var val = o[this.options.valueField];
 			var li = $("<li>").
 					html(o[this.options.textField]).
-					addClass("mouse-hand").attr("val",val);
+					attr("val",val);
 					
 			return li;
 		},

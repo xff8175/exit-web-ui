@@ -48,17 +48,17 @@
 	<div class="layout">
         <form action="#" method="get">
              <p>
-                <input id="comboBox1" type="text" name="data" data-options="url:'data/combo-box.json'"/>
+                <input id="comboBox1" type="text" name="data" data-options="url:'data/combo-box.json',dropDownHeight:150"/>
             </p>
             <p>
-                <input id="comboBox2" type="text" name="data" data-options="multiple:true,url:'data/combo-box.json'"/>
+                <input id="comboBox2" type="text" name="data" data-options="multiple:true,url:'data/combo-box.json',dropDownHeight:150"/>
             </p>
             <p>
-                <select id="select-combo1" name="state" >
-                    <option value="">
+                <select id="select-combo1" name="state">
+                    <option value="" >
                         全部
                     </option>
-                    <option value="1">
+                    <option value="1" selected="selected">
                         启用
                     </option>
                     <option value="2">
@@ -74,13 +74,13 @@
                     <option value="">
                         全部
                     </option>
-                    <option value="1">
+                    <option value="1" selected="selected">
                         启用
                     </option>
-                    <option value="2">
+                    <option value="2" selected="selected">
                         禁用
                     </option>
-                    <option value="3">
+                    <option value="3" selected="selected">
                         删除
                     </option>
                 </select>

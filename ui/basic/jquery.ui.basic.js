@@ -12,7 +12,8 @@
 			hoverable:false,
 			role:'exit-cmp'
 		},
-		
+		//Çå³ý×óÓÒÁ½±ß¿Õ¸ñ
+		rtrim:/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 		_create:function() {
 			
 			this.options = $.applyIf(this.getDataOptions() || {},this.options);
@@ -25,22 +26,13 @@
 			}
 			
 			if (this.options.focusable) {
-				this._focusable(this.element);
+				this._focusable(this.widget());
 			}
 			
 			if (this.options.hoverable) {
-				this._hoverable(this.element);
+				this._hoverable(this.widget());
 			}
 			
-		},
-		
-		_isField:function() {
-			return this.element.is("select") || 
-					this.element.is("textarea") || 
-					(this.element.is("input:not(:button)") &&
-					this.element.is("input:not(:submit)") &&
-					this.element.is("input:not(:image)") && 
-					this.element.is("input:not(:reset)"));
 		},
 		getDataOptions:function() {
 			var options = this.element.attr("data-options");

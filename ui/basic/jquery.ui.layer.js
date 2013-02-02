@@ -15,17 +15,14 @@
 			this.layerWidget = $("<div>").
 								addClass("ui-layer ui-widget ui-corner-all ui-widget-content ui-border-all ui-widget-shadow");
 								
-			if (this.options.width === "auto") {
-				//-2 边框值
-				this.layerWidget.width(this.element.innerWidth() - 2);
-			}
-			
 			this.element.after(this.layerWidget);
 			var offset = this.element.offset();
 			
 			this.layerWidget.css({
 				"left":offset.left,
-				"top":offset.top + this.element.height()
+				"top":offset.top + this.element.height(),
+				"width":this.options.width === "auto" ? (this.element.innerWidth() - 2) : this.options.width,
+				"height":this.options.height
 			});
 			
 			this._hide(this.layerWidget);

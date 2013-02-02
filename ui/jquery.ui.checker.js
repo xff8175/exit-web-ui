@@ -3,13 +3,16 @@
 	
 	$.widget("ui.checker", $.ui.field,{
 		options:{
-			basicClass:'fn-in-inline-block mouse-hand ui-checker',
+			basicClass:'fn-in-inline-block ui-checker',
 			checkBoxClass:'checkbox',
 			redioClass:'radio',
 			role:'checked',
 			hoverable:true
 		},
 		_create:function() {
+			
+			
+			this.span = $("<span>").addClass(this.options.basicClass);
 			
 			var superResult = this._super();
 			
@@ -19,8 +22,6 @@
 			
 			this._hide(this.element);
 			
-			this.span = $("<span>").addClass(this.options.basicClass);
-			
 			if (this.element.is(":checkbox")) {
 				this.span.addClass(this.options.checkBoxClass + " " + (this.options.fieldClass || ""));
 			} else {
@@ -29,11 +30,9 @@
 			
 			this.span.attr("for",this.getId());
 			
-			this.text = $("<label>").html(this.options.text).addClass("ui-checked-text");
+			this.text = $("<label>").html(this.options.text);
 			
 			this.divContainer.append(this.span).append(this.text);
-			
-			this._hoverable(this.span);
 			
 			if (!this.element.is(":disabled")) {
 				this._on(this.span,{
@@ -42,10 +41,16 @@
 			}
 			
 		},
-		
+		_init:function() {
+			if (this.element.is(":checked")) {
+				this.element.prop("checked", false);
+				this.checked();
+			}
+		},
 		_onClick:function( event ) {
 			this.checked();
 		},
+		
 		checked:function() {
 			if (this.element.is(":checkbox")) {
 				this.element.prop("checked", !this.element.is(":checked"));
@@ -73,13 +78,24 @@
 				});
 			}
 		},
-		disable:function() {
-			this._super();
-			this.span.addClass("ui-state-disabled");
+		widget:function() {
+			return this.span;
 		},
-		enable:function() {
-			this._super();
-			this.span.removeClass("ui-state-disabled");
+		_setOption: function( key, value ) {
+			this.options[ key ] = value;
+	
+			if ( key === "disabled" ) {
+				
+				var state = this.element.is(":checkbox") ? this.options.checkBoxClass : this.options.radioClass;
+				
+				this.widget()
+					.toggleClass( this.widgetFullName + "-disabled "+ state +" ui-state-disabled", !!value )
+					.attr( "aria-disabled", value );
+				this.hoverable.removeClass( "ui-state-hover" );
+				this.focusable.removeClass( "ui-state-focus" );
+			}
+	
+			return this;
 		}
 	});
 	

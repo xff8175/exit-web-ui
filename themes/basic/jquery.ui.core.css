@@ -66,6 +66,9 @@
 	cursor: not-allowed !important;
 }
 
+.ui-state-hover {
+	cursor : pointer;
+}
 
 /* Icons
 ----------------------------------*/
