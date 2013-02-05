@@ -33,6 +33,10 @@
 				this._hoverable(this.widget());
 			}
 			
+			if (this.element.is(":disabled")) {
+				this.disable();
+			}
+			
 		},
 		getDataOptions:function() {
 			var options = this.element.attr("data-options");

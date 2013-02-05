@@ -9,7 +9,7 @@
 		
 		options:{
 			role:'exit-text-field',
-			defaultIconCls:'fn-in-inline-block ui-text-field-icon ui-text-icon-color '
+			defaultIconCls:'fn-in-inline-block ui-text-field-icon '
 		},
 		
 		_create:function() {
@@ -82,6 +82,8 @@
 				s.addClass("ui-button");
 				this._hoverable(s)
 				s.click(config.handler)
+			} else {
+				s.addClass("ui-text-icon-color")
 			}
 			
 			if (config.position === "left") {

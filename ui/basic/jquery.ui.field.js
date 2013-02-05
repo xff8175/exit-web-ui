@@ -66,10 +66,6 @@
 			if (this.options.hideField) {
 				this._createHideField(this.element.attr("name"));
 			}
-			
-			if (this.element.is(":disabled")) {
-				this.disable();
-			}
 		},
 		
 		_search:function(){},
